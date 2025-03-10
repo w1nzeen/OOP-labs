@@ -4,24 +4,32 @@
 using namespace std;
 
 int main() {
-    Price total;
+    Price total{0,0};
 
-    cout << "Enter data in the format: hrn kop quantity (e.g.: 19 89 3)." << endl;
-    cout << "To finish app, use a string format." << endl;
+    FILE* file = fopen("C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP/prices.txt", "r");
 
-    int h, k, quantity;
-    while (cin >> h >> k >> quantity) {
-        Price itemPrice(h, k);
-        Price cost = itemPrice * quantity;
-        total = total + cost;
+    if (!file) {
+        cout << "File could not be opened" << endl;
+        return 1;
     }
 
-    Price roundedTotal = total.roundToNationalBank();
+    int h, k, quantity;
+    while (fscanf(file, "%d %d %d", &h, &k, &quantity) == 3) {
+        if (h<0 || k< 0 || quantity<0) continue;
 
-    cout << "\nTotal bill amount: "
-         << total.hryvnia << " hrn " << total.kopiykas << " kop" << endl;
-    cout << "Amount due (rounded): "
-         << roundedTotal.hryvnia << " hrn " << roundedTotal.kopiykas << " kop" << endl;
+        Price itemPrice{h, static_cast<short>(k)};
+        Price cost{0,0};
+        multiplyPrices(cost, itemPrice, quantity);
+        addPrices(total, total, cost);
+    }
+
+    cout << "Total bill amount: " << total.hryvnia << " hrn " << total.kopiykas << " kop " << endl;
+
+    roundToNationalBank(total);
+
+    cout << "Total rounded bill amount: " << total.hryvnia << " hrn " << total.kopiykas << " kop " << endl;
+
+    fclose(file);
 
     return 0;
 }

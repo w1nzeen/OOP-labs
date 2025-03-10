@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/w1nzeen/Desktop/CLion proj/lab1_OOP/cmake-build-debug"
+			"value" : "c:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/lab1_OOP/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/lab1_OOP"
+			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1291,7 +1291,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/lab1_OOP/cmake-build-debug"
+			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP/cmake-build-debug"
 		},
 		{
 			"name" : "lab1_OOP_IS_TOP_LEVEL",
@@ -1315,7 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/lab1_OOP"
+			"value" : "C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP"
 		}
 	],
 	"kind" : "cache",

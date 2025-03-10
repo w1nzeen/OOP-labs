@@ -1,43 +1,33 @@
 #include "Func.h"
-
 #include <cmath>
 
-Price::Price() : hryvnia(0), kopiykas(0) {}
-
-Price::Price(int h, int k) : hryvnia(h), kopiykas(k) {
-    normalize();
-}
-
-void Price::normalize() {
-    if (kopiykas >= 100) {
-        hryvnia += kopiykas / 100;
-        kopiykas %= 100;
+void normalize(Price& price) {
+    if (price.kopiykas >= 100) {
+        price.hryvnia += price.kopiykas / 100;
+        price.kopiykas %= 100;
     }
 }
 
-Price Price::operator+(const Price& other) const {
-    Price result(hryvnia + other.hryvnia, kopiykas + other.kopiykas);
-    result.normalize();
-    return result;
+void addPrices(Price& result, const Price& a, const Price& b) {
+    result.hryvnia += a.hryvnia + b.hryvnia;
+    result.kopiykas += a.kopiykas + b.kopiykas;
+
+    normalize(result);
 }
 
-Price Price::operator*(double multiplier) const {
-    double totalKop = (hryvnia * 100 + kopiykas) * multiplier;
-    int roundedTotal = static_cast<int>(round(totalKop));
-    return Price(roundedTotal / 100, roundedTotal % 100);
+void multiplyPrices(Price &result, const Price &price, int multiplier) {
+    int sumInKopiykas = (price.hryvnia * 100 + price.kopiykas) * multiplier;
+    result.hryvnia = sumInKopiykas / 100;
+    result.kopiykas = sumInKopiykas % 100;
 }
 
-Price Price::roundToNationalBank() const {
-    Price newPrice(hryvnia, kopiykas);
-    int remainder = newPrice.kopiykas % 10;
-    if (remainder < 5)
-        newPrice.kopiykas -= remainder;
-    else
-        newPrice.kopiykas += (10 - remainder);
+int roundToNationalBank(Price &price) {
+    int remainder = price.kopiykas % 10;
 
-    if (newPrice.kopiykas >= 100) {
-        newPrice.hryvnia += newPrice.kopiykas / 100;
-        newPrice.kopiykas %= 100;
-    }
-    return newPrice;
+    if (remainder < 5) price.kopiykas -= remainder;
+     else price.kopiykas += (10 - remainder);
+
+    normalize(price);
+
+    return price.hryvnia * 100 + price.kopiykas;
 }

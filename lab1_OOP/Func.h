@@ -3,15 +3,14 @@
 
 struct Price {
     int hryvnia;
-    int kopiykas;
-
-    Price();
-    Price(int h, int k);
-
-    void normalize();
-    Price operator+(const Price& other) const;
-    Price operator*(double multiplier) const;
-    Price roundToNationalBank() const;
+    short kopiykas;
 };
 
+void normalize(Price& price);
+
+void addPrices(Price& result, const Price& a, const Price& b);
+
+void multiplyPrices(Price& result, const Price& price, int multiplier);
+
+int roundToNationalBank(Price& price);
 #endif
