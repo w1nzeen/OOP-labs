@@ -1,33 +1,49 @@
 #include "Func.h"
-#include <cmath>
+#include <iostream>
+using namespace std;
 
-void normalize(Price& price) {
-    if (price.kopiykas >= 100) {
-        price.hryvnia += price.kopiykas / 100;
-        price.kopiykas %= 100;
+
+money normalize(const money& a)
+{
+    money result = a;
+    if (result.kop >= 100) {
+        result.grn += result.kop / 100;
+        result.kop = result.kop % 100;
     }
+    return result;
 }
 
-void addPrices(Price& result, const Price& a, const Price& b) {
-    result.hryvnia += a.hryvnia + b.hryvnia;
-    result.kopiykas += a.kopiykas + b.kopiykas;
+money sum(const money& a, const money& b)
+{
+    money result;
+    result.kop = a.kop + b.kop;
+    result.grn = a.grn + b.grn;
 
-    normalize(result);
+    return normalize(result);
 }
 
-void multiplyPrices(Price &result, const Price &price, int multiplier) {
-    int sumInKopiykas = (price.hryvnia * 100 + price.kopiykas) * multiplier;
-    result.hryvnia = sumInKopiykas / 100;
-    result.kopiykas = sumInKopiykas % 100;
+money mult(const money& a, int b)
+{
+    money result;
+    result.kop = a.kop * b;
+    result.grn = a.grn * b;
+
+    return normalize(result);
 }
 
-int roundToNationalBank(Price &price) {
-    int remainder = price.kopiykas % 10;
+money roundToNationalBank(const money& a)
+{
+    money result = a;
+    if (a.kop % 10 >= 5) {
+        result.kop = (a.kop / 10) * 10 + 10;
+    } else {
+        result.kop = (a.kop / 10) * 10;
+    }
 
-    if (remainder < 5) price.kopiykas -= remainder;
-     else price.kopiykas += (10 - remainder);
+    return normalize(result);
+}
 
-    normalize(price);
-
-    return price.hryvnia * 100 + price.kopiykas;
+void to_string(const money& a)
+{
+    cout << a.grn << " grn " << a.kop << " kop" << endl;
 }

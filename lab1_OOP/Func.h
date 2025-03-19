@@ -1,16 +1,12 @@
-#ifndef FUNC_H
-#define FUNC_H
+#pragma once
 
-struct Price {
-    int hryvnia;
-    short kopiykas;
+struct money {
+    int grn;
+    int kop;
 };
 
-void normalize(Price& price);
-
-void addPrices(Price& result, const Price& a, const Price& b);
-
-void multiplyPrices(Price& result, const Price& price, int multiplier);
-
-int roundToNationalBank(Price& price);
-#endif
+money normalize(const money& a);
+money sum(const money& a, const money& b);
+money mult(const money& a, int b);
+money roundToNationalBank(const money& a);
+void to_string(const money& a);

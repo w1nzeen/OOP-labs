@@ -1,35 +1,45 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 #include "Func.h"
-
 using namespace std;
 
-int main() {
-    Price total{0,0};
-
-    FILE* file = fopen("C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP/prices.txt", "r");
-
-    if (!file) {
-        cout << "File could not be opened" << endl;
+int main()
+{
+    ifstream pfile("C:/Users/w1nzeen/Desktop/CLion proj/OOP_labs/lab1_OOP/prices.txt");
+    if (!pfile.is_open()) {
+        cerr << "Error opening file!" << endl;
         return 1;
     }
 
-    int h, k, quantity;
-    while (fscanf(file, "%d %d %d", &h, &k, &quantity) == 3) {
-        if (h<0 || k< 0 || quantity<0) continue;
+    string line;
+    struct money summ {0, 0};
 
-        Price itemPrice{h, static_cast<short>(k)};
-        Price cost{0,0};
-        multiplyPrices(cost, itemPrice, quantity);
-        addPrices(total, total, cost);
+    while (getline(pfile, line)) {
+        cout << line << endl;
+
+        string tokens[3];
+        stringstream ss(line);
+        string token;
+        int i = 0;
+
+        while (getline(ss, token, ',') && i < 3) {
+            tokens[i++] = token;
+        }
+
+        if (i < 3) continue;
+
+        struct money a { stoi(tokens[0]), stoi(tokens[1]) };
+        int multiplayer = stoi(tokens[2]);
+
+        summ = sum(mult(a, multiplayer), summ);
     }
 
-    cout << "Total bill amount: " << total.hryvnia << " hrn " << total.kopiykas << " kop " << endl;
+    cout << endl << "General sum: ";
+    to_string(summ);
+    cout << "Need to pay: ";
+    to_string(roundToNationalBank(summ));
 
-    roundToNationalBank(total);
-
-    cout << "Total rounded bill amount: " << total.hryvnia << " hrn " << total.kopiykas << " kop " << endl;
-
-    fclose(file);
-
-    return 0;
+    pfile.close();
 }
