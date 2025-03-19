@@ -14,7 +14,7 @@ int main()
     }
 
     string line;
-    struct money summ {0, 0};
+    money summ {0, 0};
 
     while (getline(pfile, line)) {
         cout << line << endl;
@@ -30,16 +30,20 @@ int main()
 
         if (i < 3) continue;
 
-        struct money a { stoi(tokens[0]), stoi(tokens[1]) };
+        money a { stoi(tokens[0]), stoi(tokens[1]) };
         int multiplayer = stoi(tokens[2]);
 
-        summ = sum(mult(a, multiplayer), summ);
+        money temp_mult = a;
+        mult(temp_mult, multiplayer);
+
+        sum(summ, temp_mult);
     }
 
-    cout << endl << "General sum: ";
-    to_string(summ);
-    cout << "Need to pay: ";
-    to_string(roundToNationalBank(summ));
+    cout << endl << "General sum: " << to_string(summ) << endl;
+
+    roundToNationalBank(summ);
+    cout << "Need to pay: " << to_string(summ) << endl;
 
     pfile.close();
+    return 0;
 }

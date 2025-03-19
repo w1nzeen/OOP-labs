@@ -1,12 +1,14 @@
 #pragma once
+#include <string>
+using namespace std;
 
 struct money {
     int grn;
     int kop;
 };
 
-money normalize(const money& a);
-money sum(const money& a, const money& b);
-money mult(const money& a, int b);
-money roundToNationalBank(const money& a);
-void to_string(const money& a);
+void normalize(money& result);
+void sum(money& a, const money& b);
+void mult(money& a, int b);
+void roundToNationalBank(money& a);
+string to_string(const money& a);
