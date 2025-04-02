@@ -10,6 +10,11 @@ int main() {
     cout << "Введіть координати трикутника (x1 y1 x2 y2 x3 y3): ";
     cin >> t.A.x >> t.A.y >> t.B.x >> t.B.y >> t.C.x >> t.C.y;
 
+    if (t.A.x == t.B.x && t.A.y == t.B.y || t.A.x == t.C.x && t.A.y == t.C.y || t.C.x == t.B.x && t.C.y == t.B.y) {
+        cout << "Ви ввели щонайменше 2 однакові точки";
+        return 0;
+    }
+
     if (t.isDegenerate()) {
         cout << "Трикутник вироджений!" << endl;
     }

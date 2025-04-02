@@ -20,6 +20,5 @@ struct Triangle {
 double distance(const Point &p1, const Point &p2);
 double heronArea(const Triangle &t);
 double vectorProduct(const Point &A, const Point &B, const Point &P);
-double check(const Point &A, const Point &B, const Point &P);
 
 #endif // FUNC_H

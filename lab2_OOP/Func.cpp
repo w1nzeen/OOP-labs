@@ -35,12 +35,6 @@ bool Triangle::contains(const Point &P) const {
   return fabs(S_main - S_sum) < 1e-9;
 }
 
-double check(const Point &A, const Point &B, const Point &P) {
-  if (A.x == P.x && A.y == P.y) {
-    std::cout << "Точка належить стороні трикутника" << std::endl;
-  }
-}
-
 double Triangle::area() const {
   return heronArea(*this);
 }
