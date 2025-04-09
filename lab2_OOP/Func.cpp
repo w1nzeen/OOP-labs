@@ -17,6 +17,9 @@ double vectorProduct(const Point &A, const Point &B, const Point &P) {
 }
 
 bool Triangle::containsVec(const Point &P) const {
+
+  if (isDegenerate()) return false;
+
   double W1 = vectorProduct(A, B, P);
   double W2 = vectorProduct(B, C, P);
   double W3 = vectorProduct(C, A, P);
@@ -40,19 +43,17 @@ double Triangle::area() const {
 }
 
 bool Triangle::isDegenerate() const {
-  return area() < 1e-9;
+  return fabs(vectorProduct(A, B, C)) < 1e-9;
 }
 
 bool pointOnLine(const Point& p, const Point& a, const Point& b) {
-  // Перевірка колінеарності: якщо векторний добуток = 0, точка на прямій
   if (fabs(vectorProduct(a, b, p)) > 1e-9) return false;
 
-  // Перевірка, чи точка лежить між a і b
   double dot = (p.x - a.x) * (b.x - a.x) + (p.y - a.y) * (b.y - a.y);
   if (dot < 0) return false;
 
-  double lenSq = pow(b.x - a.x, 2) + pow(b.y - a.y, 2);
-  if (dot > lenSq) return false;
+  double distanceInPower = pow(b.x - a.x, 2) + pow(b.y - a.y, 2);
+  if (dot > distanceInPower) return false;
 
-  return true;  // Точка на межі
+  return true;
 }
