@@ -10,10 +10,8 @@ int main() {
     cout << "Введіть координати трикутника (x1 y1 x2 y2 x3 y3): ";
     cin >> t.A.x >> t.A.y >> t.B.x >> t.B.y >> t.C.x >> t.C.y;
 
-    if (t.A.x == t.B.x && t.A.y == t.B.y || t.A.x == t.C.x && t.A.y == t.C.y || t.C.x == t.B.x && t.C.y == t.B.y) {
-        cout << "Ви ввели щонайменше 2 однакові точки";
-        return 0;
-    }
+    cout << "Вершина A(" << t.A.x << ", " << t.A.y << "), B(" << t.B.x << ", " << t.B.y << "), C(" << t.C.x << ", " << t
+            .C.y << ")" << endl;
 
     if (t.isDegenerate()) {
         cout << "Трикутник вироджений!" << endl;
@@ -44,15 +42,35 @@ int main() {
     switch (methodId) {
         case 1:
             int n;
-            cout << "Введіть кількість точок для перевірки: ";
-            cin >> n;
+            while (true) {
+                cout << "Введіть кількість точок для перевірки: ";
+                cin >> n;
+
+                if (cin.fail()) {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cout << "Некоректне введення! Введіть додатне число " << endl;
+                    continue;
+                }
+                if (n > 0) {
+                    break;
+                }
+                cout << "Некоректний вибір! Введіть додатне число" << endl;
+            }
 
             for (int i = 0; i < n; ++i) {
                 Point p;
                 cout << "Введіть координати точки (x y): ";
                 cin >> p.x >> p.y;
 
-                if (t.contains(p)) {
+                if ((p.x == t.A.x && p.y == t.A.y) || (p.x == t.B.x && p.y == t.B.y) || (
+                        p.x == t.C.x && p.y == t.C.y)) {
+                    cout << "Точка рівна вершині трикуткика" << endl;
+                        }
+                else if ( pointOnLine(p, t.A, t.B) || pointOnLine(p, t.B, t.C) || pointOnLine(p, t.C, t.A)) {
+                    cout << "Точка лежить на межі трикутника" << endl;
+                }
+                else if (t.containsVec(p)) {
                     cout << "Точка належить трикутнику" << endl;
                 } else {
                     cout << "Точка не належить трикутнику" << endl;
@@ -61,8 +79,21 @@ int main() {
             break;
         case 2:
             int k;
-            cout << "Введіть кількість точок для перевірки: ";
-            cin >> k;
+            while (true) {
+                cout << "Введіть кількість точок для перевірки: ";
+                cin >> k;
+
+                if (cin.fail()) {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cout << "Некоректне введення! Введіть додатне число" << endl;
+                    continue;
+                }
+                if (k > 0) {
+                    break;
+                }
+                cout << "Некоректний вибір! Введіть додатне число" << endl;
+            }
 
             for (int i = 0; i < k; ++i) {
                 Point p;
@@ -72,7 +103,11 @@ int main() {
                 if ((p.x == t.A.x && p.y == t.A.y) || (p.x == t.B.x && p.y == t.B.y) || (
                         p.x == t.C.x && p.y == t.C.y)) {
                     cout << "Точка рівна вершині трикуткика" << endl;
-                } else if (t.containsVec(p)) {
+                }
+                else if ( pointOnLine(p, t.A, t.B) || pointOnLine(p, t.B, t.C) || pointOnLine(p, t.C, t.A)) {
+                    cout << "Точка лежить на межі трикутника" << endl;
+                }
+                else if (t.containsVec(p)) {
                     cout << "Точка належить трикутнику" << endl;
                 } else {
                     cout << "Точка не належить трикутнику" << endl;
