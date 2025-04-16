@@ -4,7 +4,7 @@ using namespace std;
 
 struct money {
     int grn;
-    int kop;
+    short kop;
 };
 
 void normalize(money& result);

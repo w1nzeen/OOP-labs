@@ -7,8 +7,8 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue" value="CppCodeGeneration" type="string" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -46,6 +46,14 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/lab1_OOP.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/lab1_OOP.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prices.txt" beforeDir="false" afterPath="$PROJECT_DIR$/prices.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/CMakeFiles/lab2_OOP.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/CMakeFiles/lab2_OOP.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/lab2_OOP.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/cmake-build-debug/lab2_OOP.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab2_OOP/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab2_OOP/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +133,13 @@
       <workItem from="1741790598837" duration="4457000" />
       <workItem from="1741933001303" duration="51000" />
       <workItem from="1742366614602" duration="2576000" />
-      <workItem from="1742395352627" duration="4214000" />
+      <workItem from="1742395352627" duration="4529000" />
+      <workItem from="1742537822269" duration="25000" />
+      <workItem from="1743000017496" duration="1124000" />
+      <workItem from="1743001353534" duration="35000" />
+      <workItem from="1743001946422" duration="25000" />
+      <workItem from="1743602493837" duration="58000" />
+      <workItem from="1743604676868" duration="39000" />
     </task>
     <servers />
   </component>

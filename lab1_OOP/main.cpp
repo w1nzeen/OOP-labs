@@ -39,11 +39,12 @@ int main()
         sum(summ, temp_mult);
     }
 
+    pfile.close();
+
     cout << endl << "General sum: " << to_string(summ) << endl;
 
     roundToNationalBank(summ);
     cout << "Need to pay: " << to_string(summ) << endl;
 
-    pfile.close();
     return 0;
 }

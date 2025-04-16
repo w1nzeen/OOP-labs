@@ -63,6 +63,12 @@ int main() {
                 cout << "Введіть координати точки (x y): ";
                 cin >> p.x >> p.y;
 
+                double epsilon = 1e3;
+                p.x = round(p.x * epsilon) / epsilon;
+                p.y = round(p.y * epsilon) / epsilon;
+
+                cout << "Точка Р з координатами: " << p.x << " " << p.y << endl;
+
                 if ((p.x == t.A.x && p.y == t.A.y) || (p.x == t.B.x && p.y == t.B.y) || (
                         p.x == t.C.x && p.y == t.C.y)) {
                     cout << "Точка рівна вершині трикуткика" << endl;
@@ -100,6 +106,11 @@ int main() {
                 cout << "Введіть координати точки (x y): ";
                 cin >> p.x >> p.y;
 
+                double epsilon = 1e3;
+                p.x = round(p.x * epsilon) / epsilon;
+                p.y = round(p.y * epsilon) / epsilon;
+
+                cout << "Точка Р з координатами: " << p.x << " " << p.y << endl;
                 if ((p.x == t.A.x && p.y == t.A.y) || (p.x == t.B.x && p.y == t.B.y) || (
                         p.x == t.C.x && p.y == t.C.y)) {
                     cout << "Точка рівна вершині трикуткика" << endl;
