@@ -1,39 +1,21 @@
-#include <iostream>
-#include <iomanip>
 #include "Func.h"
+#include <iostream>
 
 using namespace std;
-
 int main() {
     system("chcp 65001 > nul");
+    Dychotomia_class * dyh = new Dychotomia_class();
 
-    int method;
-    cout << "Виберіть метод розвязання: \n1. Метод Дихотомії\n2. Метод Ньютона\n> ";
-    cin >> method;
+    dyh -> setlimits(1, 2);
+    dyh -> setTolerance(1e-6);
 
-    try {
-        if (method == 1) {
-            double a, b;
-            cout << "Вкажіть інтервал [a, b]: ";
-            cin >> a >> b;
 
-            dihotomySolver solver(a, b);
-            double root = solver.solve();
-            cout << "Корінь за методом Дихотомії: " << root << "\n";
-        } else if (method == 2) {
-            double x0;
-            cout << "Введіть початковий приростіс: ";
-            cin >> x0;
+    double root_dichotomy = dyh -> dichotomymethod();
+    cout << "Корінь з методом Дихотомії: " << root_dichotomy << endl;
 
-            NewtonSolver solver(x0);
-            double root = solver.solve();
-            cout << "Корінь за методом Ньютона: " << root << "\n";
-        } else {
-            cout << "Невідомий метод\n";
-        }
-    } catch (const exception& e) {
-        cerr << "Помилка: " << e.what() << "\n";
-    }
+
+    double root_newton = dyh-> newtonmethod();
+    cout << "корінь з методом Ньютона: " << root_newton << endl;
 
     return 0;
 }

@@ -1,75 +1,59 @@
 #include "Func.h"
+#include "iostream"
 #include <cmath>
-#include <iostream>
 
-using namespace std;
+Dychotomia_class::Dychotomia_class()  {
 
-double dihotomySolver::f(double x) {
-  double denominator = 3 - sin(3.6 * x);
-  if (denominator == 0) {
-    throw runtime_error("Ділення на нуль.");
-  }
-  return x - 1.0 / denominator;
+    left_limit = 1;
+    right_limit = 2;
+    tolerance = 1e-6;
 }
 
-dihotomySolver::dihotomySolver(double a, double b, double epsilon)
-    : a(a), b(b), epsilon(epsilon) {}
+Dychotomia_class::~Dychotomia_class()  {}
 
-double dihotomySolver::solve() {
-  double left = a;
-  double right = b;
-  double mid;
 
-  if (f(left) * f(right) > 0) {
-    throw invalid_argument("Функція має однаковий знак на кінцях.");
-  }
-
-  while ((right - left) > epsilon) {
-    mid = (left + right) / 2.0;
-    if (f(left) * f(mid) < 0)
-      right = mid;
-    else
-      left = mid;
-  }
-
-  return (left + right) / 2.0;
+void Dychotomia_class::setlimits(double left, double right) {
+    left_limit = left;
+    right_limit = right;
 }
 
-double NewtonSolver::f(double x) {
-  return x - 1.0 / (3 - sin(3.6 * x));
+void Dychotomia_class::setTolerance(double tol) {
+    tolerance = tol;
 }
 
-double NewtonSolver::fPrime(double x) {
-  double denominator = 3 - sin(3.6 * x);
-  if (fabs(denominator) < 1e-12) {
-    throw runtime_error("Похідна замала, помилка ділення на нуль.");
-  }
-  double dSin = 3.6 * cos(3.6 * x);
-  return 1.0 + dSin / (denominator * denominator);
-}
+double Dychotomia_class::dichotomymethod() {
 
-NewtonSolver::NewtonSolver(double x0, double epsilon, int maxIter)
-    : x0(x0), epsilon(epsilon), maxIter(maxIter) {}
+    double a = left_limit;
+    double b = right_limit;
+    double x;
 
-double NewtonSolver::solve() {
-  double x = x0;
+    while (fabs(b - a) > tolerance) {
+        x = (a + b) / 2;
+        if ( (cos(2/x) - 2 * sin(1/x) + 1/x) > 0)
+            b = x;
+        else
+            a = x;
 
-  for (int i = 0; i < maxIter; ++i) {
-    double fx = f(x);
-    double fpx = fPrime(x);
-
-    if (abs(fpx) < 1e-12) {
-      throw runtime_error("Похідна замала");
     }
 
-    double next = x - fx / fpx;
+    return (a + b) / 2;
+}
 
-    if (abs(next - x) < epsilon) {
-      return next;
+double Dychotomia_class::newtonmethod() {
+
+    double x0 = (left_limit + right_limit) / 2.0;
+    double x = x0;
+
+    while (true) {
+        double fx = cos(2/x) - 2 * sin(1/x) + 1/x;
+        double dfx = (2*sin(2/x)+2*cos(1/x))/pow(x, 2)-1/(x, 2);
+
+        double x_next = x - fx / dfx;
+
+        if (fabs(x_next - x) < tolerance)
+            return x_next;
+
+        x = x_next;
     }
 
-    x = next;
-  }
-
-  throw runtime_error("Метод Ньютона не сходився.");
 }
