@@ -28,7 +28,7 @@ double Dychotomia_class::dichotomymethod() {
     double b = right_limit;
     double x;
 
-    while (std::fabs(b - a) > tolerance) {
+    while (fabs(b - a) > tolerance) {
         x = (a + b) / 2;
         if (fx(x) > 0)
             b = x;
@@ -56,17 +56,12 @@ double Newton_class::newtonmethod() {
     double x_next;
 
     while (true) {
-        double fx_val = fx(x);
-        double dfx_val = fdx(x);
+        double fx_nm = fx(x);
+        double dfx_nm = fdx(x);
 
-        if (dfx_val == 0) {
-            std::cerr << "Error: Ділення на 0." << std::endl;
-            return x;
-        }
+        x_next = x - fx_nm / dfx_nm;
 
-        x_next = x - fx_val / dfx_val;
-
-        if (std::fabs(x_next - x) < tolerance)
+        if (fabs(x_next - x) < tolerance)
             break;
 
         x = x_next;
