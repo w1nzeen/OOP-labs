@@ -12,7 +12,8 @@ public:
 
     int SetSound(std::string instrument_sound);
 
-    int Play();
+    virtual int Play();
+    virtual ~Instrument() {}
 
 protected:
     int DescribeInstrument();
@@ -21,8 +22,7 @@ protected:
 class Guitar : public Instrument {
 public:
     Guitar();
-
-    int Play();
+    int Play() override;
 };
 
 class Voice : public Instrument {
@@ -31,7 +31,7 @@ class Voice : public Instrument {
 public:
     Voice();
 
-    int Play();
+    int Play() override;
 
    int SetInstrument(std::string singer_instrument);
 
@@ -40,35 +40,13 @@ protected:
 };
 
 
-class CustomVoice : public Voice {
-    std::string name;
-
-public:
-    int SetName(std::string singer_name);
-
-    CustomVoice(std::string singer_name);
-};
-
-
 class Drum : public Instrument {
 public:
     Drum();
 
-    int Play();
+    int Play() override;
 };
 
-
-class CustomDrum : public Drum {
-    std::string name;
-    std::string colour;
-
-public:
-    int SetName(std::string drum_name);
-
-    int SetColour(std::string drum_colour);
-
-    CustomDrum(std::string drum_name, std::string drum_colour);
-};
 
 class ElectricGuitar : public Guitar {
 protected:
@@ -92,4 +70,26 @@ public:
     int SetColour(std::string color);
 
     CustomGuitar(std::string guitar_model, std::string guitar_name, std::string color);
+};
+
+class CustomDrum : public Drum {
+    std::string name;
+    std::string colour;
+
+public:
+    int SetName(std::string drum_name);
+
+    int SetColour(std::string drum_colour);
+
+    CustomDrum(std::string drum_name, std::string drum_colour);
+};
+
+
+class CustomVoice : public Voice {
+    std::string name;
+
+public:
+    int SetName(std::string singer_name);
+
+    CustomVoice(std::string singer_name);
 };

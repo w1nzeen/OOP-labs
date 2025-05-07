@@ -37,7 +37,7 @@ int Voice::SetInstrument( std::string singer_instrument) {
     return 1;
 }
 int Voice::DescribeVoice(){
-    std::cout << "Оснащенний " << instrument << " в руках.   \n Звучить текст пісні: ";
+    std::cout << "Оснащенний " << instrument << " в руках.\n Звучить текст пісні: ";
     return 1;
 }
 
@@ -65,7 +65,7 @@ Voice::Voice() {
 
 int Voice::Play()
 {
-    std::cout << "In the end";
+    std::cout << "\"In the end\"";
     return 1;
 }
 
