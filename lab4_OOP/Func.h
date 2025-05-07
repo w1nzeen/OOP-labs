@@ -1,68 +1,95 @@
-#ifndef FUNC_H
-#define FUNC_H
-
-#include <iostream>
 #include <string>
 
-class Character {
-    std::string characteristic;
-    int pts;
-    std::string difficulty;
+class Instrument {
+    std::string body;
+    int strings;
+    std::string sound;
 
 public:
-    int SetCharacteristic(std::string characteristic_type);
-    int SetPts(int number_of_pts);
-    int SetDifficulty(std::string character_dificulty);
+    int SetBody(std::string body_type);
 
-    virtual int Say() = 0;
+    int SetStrings(int number_of_strings);
+
+    int SetSound(std::string instrument_sound);
+
+    int Play();
 
 protected:
-    int CreateCharacter();
+    int DescribeInstrument();
 };
 
-class Strength : public Character {
+class Guitar : public Instrument {
 public:
-    Strength();
-    int Say() override;
+    Guitar();
+
+    int Play();
 };
 
-class Agility : public Character {
+class Voice : public Instrument {
+    std::string instrument;
+    std::string sound;
 public:
-    Agility();
-    int Say() override;
-};
+    Voice();
 
-class Inteligence : public Character {
-public:
-    Inteligence();
-    int Say() override;
-};
+    int Play();
 
-class Universal : public Character {
-public:
-    Universal();
-    int Say() override;
-};
+   int SetInstrument(std::string singer_instrument);
 
-class BestHeros : public Character {
 protected:
-    std::string type;
-
-public:
-    int SetHero(std::string character_hero);
-    BestHeros(std::string character_hero);
-    BestHeros();
+    int DescribeVoice();
 };
 
-class PopularHero : public BestHeros {
+
+class CustomVoice : public Voice {
     std::string name;
-    std::string descr;
-    int Say() override;
 
 public:
-    int SetName(std::string character_name);
-    int SetDescription(std::string description);
-    PopularHero(std::string hero_type, std::string character_name, std::string description);
+    int SetName(std::string singer_name);
+
+    CustomVoice(std::string singer_name);
 };
 
-#endif // FUNC_H
+
+class Drum : public Instrument {
+public:
+    Drum();
+
+    int Play();
+};
+
+
+class CustomDrum : public Drum {
+    std::string name;
+    std::string colour;
+
+public:
+    int SetName(std::string drum_name);
+
+    int SetColour(std::string drum_colour);
+
+    CustomDrum(std::string drum_name, std::string drum_colour);
+};
+
+class ElectricGuitar : public Guitar {
+protected:
+    std::string model;
+
+public:
+    int SetModel(std::string guitar_model);
+
+    ElectricGuitar(std::string guitar_model);
+
+    ElectricGuitar();
+};
+
+class CustomGuitar : public ElectricGuitar {
+    std::string name;
+    std::string colour;
+
+public:
+    int SetName(std::string guitar_name);
+
+    int SetColour(std::string color);
+
+    CustomGuitar(std::string guitar_model, std::string guitar_name, std::string color);
+};

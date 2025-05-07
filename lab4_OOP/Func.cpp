@@ -1,105 +1,149 @@
+#include <iostream>
 #include "func.h"
 
-int Character::SetCharacteristic(std::string characteristic_type) {
-    characteristic = characteristic_type;
+int Instrument::SetBody(std::string body_type)
+{
+    body = body_type;
     return 1;
 }
 
-int Character::SetPts(int number_of_pts) {
-    pts = number_of_pts;
+int Instrument::SetStrings(int number_of_strings)
+{
+    strings = number_of_strings;
     return 1;
 }
 
-int Character::SetDifficulty(std::string character_dificulty) {
-    difficulty = character_dificulty;
+int Instrument::SetSound(std::string instrument_sound)
+{
+    sound = instrument_sound;
     return 1;
 }
 
-int Character::CreateCharacter() {
-    std::cout << " Персонаж який входить до класу: " << characteristic << " та має складність в " << " потребує щонайменше " << pts << " рейтингу, щоб добре грати на ньому" << std::endl;
+int Instrument::Play()
+{
+    std::cout << "Дзинь...";
     return 1;
 }
 
-Strength::Strength() {
-    SetCharacteristic("Axe taunts nearby enemy units, forcing them to attack him, while he gains bonus armor during the duration.");
-    SetPts(2000);
-    SetDifficulty("3");
-    CreateCharacter();
-    Say();
-}
 
-int Strength::Say() {
-    std::cout << "грізно гарчить, розрубуючи противника" << std::endl;
+int Instrument::DescribeInstrument()
+{
+    std::cout << "Оснащений " << strings << " струнами та " << body << ". \n Звучить " << sound << " звуком: ";
     return 1;
 }
 
-Agility::Agility() {
-    SetCharacteristic("Burns an opponent's mana on each attack and deals damage equal to a percentage of the mana burnt. Enemies with no mana left are temporarily slowed.");
-    SetPts(2400);
-    SetDifficulty("3");
-    CreateCharacter();
-    Say();
+int Voice::SetInstrument( std::string singer_instrument) {
+    instrument = singer_instrument;
+    return 1;
 }
-
-int Agility::Say() {
-    std::cout << "Знову сміється, вбиваючи ще одного мага" << std::endl;
+int Voice::DescribeVoice(){
+    std::cout << "Оснащенний " << instrument << " в руках.   \n Звучить текст пісні: ";
     return 1;
 }
 
-Inteligence::Inteligence() {
-    SetCharacteristic("Muerta fires a ghostly trickshot at an enemy unit or tree. When the bullet strikes, it damages and briefly slows, then ricochets in the targeted direction.");
-    SetPts(1800);
-    SetDifficulty("3");
-    CreateCharacter();
-    Say();
+Guitar::Guitar()
+{
+    int e = SetStrings(6);
+    e = SetBody("дерев'яним корпусом");
+    e = SetSound("яскравим");
+    e = DescribeInstrument();
+    e = Play();
 }
 
-int Inteligence::Say() {
-    std::cout << "Знову в соло розносить всіх і вся" << std::endl;
+int Guitar::Play()
+{
+    std::cout << "Бринь... Аккорд!";
     return 1;
 }
 
-Universal::Universal() {
-    SetCharacteristic("Tethers Io to an allied unit, granting bonus movement speed to both. When Io restores health or mana, the tethered unit gains a portion of that amount. The tether breaks when the allied unit moves too far away, or Io cancels the tether. Tether briefly slows enemies touching it.");
-    SetPts(4800);
-    SetDifficulty("3");
-    CreateCharacter();
-    Say();
+Voice::Voice() {
+    int e = SetInstrument("мікрофоном");
+    e = SetSound("прекрасним");
+    e = DescribeVoice();
+    e = Play();
 }
 
-int Universal::Say() {
-    std::cout << "*Звуки радості*" << std::endl;
-    return 1;
-}
-int BestHeros::SetHero(std::string hero_type) {
-    type = hero_type;
+int Voice::Play()
+{
+    std::cout << "In the end";
     return 1;
 }
 
-BestHeros::BestHeros(std::string hero_type) {
-    SetHero(hero_type);
-    std::cout << "\nГерой типу: " << type;
+Drum::Drum()
+{
+    int e = SetStrings(0);
+    e = SetBody("круглим корпусом");
+    e = SetSound("гучним");
+    e = DescribeInstrument();
+    e = Play();
 }
 
-BestHeros::BestHeros() {}
-
-int PopularHero::SetName(std::string character_name) {
-    name = character_name;
+int Drum::Play()
+{
+    std::cout << "Бум... Тррр-бум!";
+    return 1;
+}
+int CustomVoice::SetName(std::string singer_name) {
+    name = singer_name;
     return 1;
 }
 
-int PopularHero::SetDescription(std::string description) {
-    descr = description;
+
+int CustomDrum::SetName(std::string drum_name)
+{
+    name = drum_name;
     return 1;
 }
 
-PopularHero::PopularHero(std::string hero_type, std::string character_name, std::string description) {
-    SetHero(type);
-    SetDescription(description);
-    SetName(character_name);
-    std::cout << "Герой на ім'я: " << name << " з таким описом: " << description << " належить до типу:" << hero_type << std::endl;
-}
-int PopularHero::Say() {
-    std::cout << "I am a popular hero, ready for battle!" << std::endl;
+int CustomDrum::SetColour(std::string drum_color)
+{
+    colour = drum_color;
     return 1;
 }
+
+int ElectricGuitar::SetModel(std::string guitar_model)
+{
+    model = guitar_model;
+    return 1;
+}
+
+ElectricGuitar::ElectricGuitar(std::string guitar_model)
+{
+    int e = SetModel(guitar_model);
+    std::cout << "\n Модель гітари: " << model;
+}
+
+ElectricGuitar::ElectricGuitar()
+{
+}
+
+int CustomGuitar::SetName(std::string guitar_name)
+{
+    name = guitar_name;
+    return 1;
+}
+
+int CustomGuitar::SetColour(std::string color)
+{
+    colour = color;
+    return 1;
+}
+
+CustomGuitar::CustomGuitar(std::string guitar_model, std::string guitar_name, std::string color)
+{
+    int e = SetModel(guitar_model);
+    e = SetColour(color);
+    e = SetName(guitar_name);
+    std::cout << "\n Це " << colour << " гітара моделі " << model << ", яка належить: " << name << ".\n\n";
+}
+CustomDrum::CustomDrum(std::string drum_name, std::string drum_colour) {
+    int e= SetColour(drum_colour);
+    e = SetName(drum_name);
+    std::cout << "\n Це " << colour << " музичний інструмент нашого барабанщика на ім'я: " << name << ".\n\n";
+}
+
+CustomVoice::CustomVoice(std::string singer_name) {
+    int e = SetName(singer_name);
+    std::cout << "\n Це " << name << " знову віддає всі свої сили на ідеальний звук на концерті.\n\n";
+}
+
